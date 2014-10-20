@@ -1,0 +1,32 @@
+Credits:
+
+1. https://wiki.python.org/moin/TcpCommunication
+	-Used code from this website to set up my TCP server and client. these lines specifically helped me out:
+	   
+	   Client code:
+
+	   s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	   s.connect((TCP_IP, TCP_PORT))
+	   s.send(MESSAGE)
+	   data = s.recv(BUFFER_SIZE)
+	   s.close()
+
+	   Server code:
+
+	    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+		s.bind((TCP_IP, TCP_PORT))
+		s.listen(1)
+
+		conn, addr = s.accept()
+		print 'Connection address:', addr
+	while 1:
+    	data = conn.recv(BUFFER_SIZE)
+    	if not data: break
+    	print "received data:", data
+    	conn.send(data)  # echo
+	conn.close()
+
+2. http://www.binarytides.com/programming-udp-sockets-in-python/
+	-Used code to help set up UDP server and client:
+	
+

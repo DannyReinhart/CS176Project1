@@ -1,0 +1,37 @@
+#!/usr/bin/python           # This is server.py file
+
+
+import sys                  # Import sys
+import socket               # Import socket module
+
+def main():
+
+   if (len(sys.argv) != 3):                        #error checking for number of arguments
+      print('ERROR: Invalid number of args. Terminating.')
+      sys.exit()
+
+   port = int(sys.argv[2]) 
+   
+   if (port < int("0") or port > int("65535")):    #checking for valid port number
+      print('ERROR: Invalid port. Terminating.')
+      sys.exit();
+
+   try: #checking for correct binding
+      serverSocket = socket(AF_INET, SOCK_STREAM)  # Create a socket object
+      host = socket.gethostname()                  # Get local machine name
+      serverSocket.bind((host, port))              # Bind to the port
+   except error:
+      print("ERROR: Could not bind port. Terminating")
+      sys.exit();
+
+   serverSocket.listen(5)                 # Now wait for client connection.
+   while True:
+      c, addr = serverSocket.accept()     # Establish connection with client.
+      print('Connected.')
+      while True:
+         
+
+if __name__ =='__main__':
+
+    main()
+
